@@ -1,12 +1,12 @@
 resource "aws_security_group" "docdb" {
-  name        = "${local.TAG_NAME}-docdb-sg"
+  name        = "${local.TAG_NAME}-sg"
   description = "Allow TCP inbound traffic"
   vpc_id      = var.VPC_ID
 
   ingress {
     description      = "TCP from VPC"
-    from_port        = var.DOC_DB_PORT
-    to_port          = var.DOC_DB_PORT
+    from_port        = var.PORT
+    to_port          = var.PORT
     protocol         = "tcp"
     cidr_blocks      = var.PRIVATE_SUBNET_CIDR
   }
@@ -19,7 +19,7 @@ resource "aws_security_group" "docdb" {
   }
 
   tags = {
-    Name = "${local.TAG_NAME}-docdb-sg"
+    Name = "${local.TAG_NAME}-sg"
   }
 
 }

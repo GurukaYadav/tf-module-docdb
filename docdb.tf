@@ -1,7 +1,7 @@
 resource "aws_docdb_cluster" "docdb" {
-  cluster_identifier = "${local.TAG_NAME}-docdb-cluster"
-  engine             =  var.DOC_DB_ENGINE
-  engine_version     =  var.DOC_DB_ENGINE_VERSION
+  cluster_identifier = "${local.TAG_NAME}-cluster"
+  engine             =  var.ENGINE
+  engine_version     =  var.ENGINE_VERSION
   master_username    = jsondecode(data.aws_secretsmanager_secret_version.secret.secret_string)["DOCDB_USER"]
   master_password    = jsondecode(data.aws_secretsmanager_secret_version.secret.secret_string)["DOCDB_PASS"]
   db_cluster_parameter_group_name = aws_docdb_cluster_parameter_group.pg.name
@@ -11,7 +11,7 @@ resource "aws_docdb_cluster" "docdb" {
 
 resource "aws_docdb_cluster_instance" "cluster_instances" {
   count              = 1
-  identifier         = "${local.TAG_NAME}-docdb-instance"
+  identifier         = "${local.TAG_NAME}-instance"
   cluster_identifier = aws_docdb_cluster.docdb.id
-  instance_class     = var.DOC_DB_INSTANCE_CLASS
+  instance_class     = var.INSTANCE_CLASS
 }
