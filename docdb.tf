@@ -10,7 +10,7 @@ resource "aws_docdb_cluster" "docdb" {
 }
 
 resource "aws_docdb_cluster_instance" "cluster_instances" {
-  count              = 1
+  count              = var.NO_OF_NODES
   identifier         = "${local.TAG_NAME}-instance"
   cluster_identifier = aws_docdb_cluster.docdb.id
   instance_class     = var.INSTANCE_CLASS
