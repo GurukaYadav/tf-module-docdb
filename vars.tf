@@ -9,3 +9,4 @@ variable "PRIVATE_SUBNET_CIDR" {}
 variable "PROJECT" {}
 variable "ENV" {}
 variable "NO_OF_NODES" {}
+
