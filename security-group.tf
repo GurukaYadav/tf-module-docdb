@@ -8,7 +8,7 @@ resource "aws_security_group" "docdb" {
     from_port        = var.PORT
     to_port          = var.PORT
     protocol         = "tcp"
-    cidr_blocks      = var.PRIVATE_SUBNET_CIDR
+    cidr_blocks      = concat(var.PRIVATE_SUBNET_CIDR, tolist([var.WORKSTATION_IP]))
   }
 
   egress {
