@@ -1,6 +1,6 @@
 resource "null_resource" "web" {
-  triggers {
-    abc=timestamp()
+  triggers = {
+    abc = timestamp()
   }
   provisioner "local-exec" {
     command = <<EOF
