@@ -1,7 +1,7 @@
 resource "null_resource" "web" {
-  triggers = {
-    abc = timestamp()
-  }
+#  triggers = {
+#    abc = timestamp()
+#  }
   provisioner "local-exec" {
     command = <<EOF
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
